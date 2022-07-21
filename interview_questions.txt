@@ -1,0 +1,562 @@
+
+java  MACSYS INFORMATICS PRIVATE LIMITED
+=======================================
+
+1)For loop & Stream difference
+
+2)how u can handle memory leakage issue
+
+3)Stream methods
+
+4)Function interface
+
+5)how to find duplicate element in loop
+
+	Declare and initialize an array.
+	
+	Duplicate elements can be found using two loops. The outer loop will iterate through the array from 0 to length of the array. The outer loop will select an element. The inner loop will be used to compare the selected element with the rest of the elements of the array.
+	
+	If a match is found which means the duplicate element is found then, display the element.
+
+6)Collection which one used
+
+7)Thread
+
+8)Performance issues/Sql queries
+
+
+
+
+
+
+
+Angular
+==================================
+1)Behavior subject
+
+
+2)Javascript event loop
+
+
+3)Interceptor/HttpInterceptor
+
+
+4)Promise vs observables
+
+
+5)how u can pass object in Angular
+
+
+6)http httpclient
+
+
+Microservice
+======================
+https://medium.com/design-microservices-architecture-with-patterns/microservices-communications-f319f8d76b71
+1)How ur connecting Microservice to another service communication
+
+2)Microservices libraries
+
+Eureka
+Ribbon
+Hysterix
+Zuul
+
+
+27june tcs interview
+=========================
+js
+---------
+datatypes in javascript
+
+There are five types of primitive data types in JavaScript. They are as follows:
+
+Data Type	Description
+String	represents sequence of characters e.g. "hello"
+Number	represents numeric values e.g. 100
+Boolean	represents boolean value either false or true
+Undefined	represents undefined value
+Null	represents null i.e. no value at all
+
+creating clasess in javascript
+Use the keyword class to create a class.
+Always add a method named constructor()
+
+class ClassName {
+  constructor() { ... }
+}
+
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+}
+
+A JavaScript class is not an object.
+
+It is a template for JavaScript objects.
+When you have a class, you can use the class to create objects
+let myCar1 = new Car("Ford", 2014);
+document.getElementById("demo").innerHTML =
+myCar.name + " " + myCar.year;
+
+closure
+
+use strict keyword
+
+Strict mode makes it easier to write "secure" JavaScript.
+Strict mode changes previously accepted "bad syntax" into real errors.
+
+difference between 2=="2" 2==="2" result
+2=="2" true
+2==="2" false
+=========================================================
+observables
+--------------------
+An Observable is an entity that emits (or publishes) multiple data values (stream of data) over time and asynchronously.
+
+Observer is a collection of callbacks that knows how to listen to values delivered by the Observable.
+
+Subscriptions are objects that are returned when you subscribe to an Observable. 
+They contain many methods such as the unsubscribe() method that you can call to unsubscribe from receving published values from the Observable.
+
+What is a Subject in RxJS
+--------------------------------------
+A Subject is a special type of Observable that observers can also subscribe to it to receive published values 
+but with one difference:  The values are multicasted to many Observers.
+
+Note: By default an RxJS Observable is unicast.
+
+Unicast simply means that each subscribed observer has an independent execution of the Observable 
+while multicast means that the Observable execution is shared by multiple Observers.
+
+Note: Subjects are similar to Angular EventEmitters.
+
+So when using Subjects instead of plain Observables, all subscribed Observers will get the same values of emitted data.
+
+Note: Subjects are also Observers i.e they can also subscribe to other Observables and listen to published data.
+
+Hot and Cold Observables
+--------------------------------------
+Unlike regular Observables, Subjects are called hot.  
+A hot Observable starts emitting events even before any observer 
+subscribes to it which means observers may lose previous emitted values 
+if they don’t subscribe at that right time while cold Observables ****start emitting values when at least one observer is subscribed.
+
+Note: You can use the asObservable() method to convert a subject to only an Observable.
+
+RxJS’ BehaviorSubject and ReplaySubject
+-------------------------------------------------
+RxJS provides two other types of Subjects: BehaviorSubject and ReplaySubject.
+
+With a normal Subject, Observers that are subscribed at a point later will not receive data values emitted before their subscriptions. 
+In many situations, this is not the desired behavior we want to implement. 
+This can be solved using  BehaviorSubject and ReplaySubject.
+
+ReplaySubject works by using a buffer that keeps the emitted values and re-emit them when new Observers are subscribed.
+
+BehaviorSubject works like ReplaySubject but only re-emits the last emitted value.
+
+https://www.freecodecamp.org/news/angular-rxjs-in-depth/
+
+const behSuj=new BehaviorSubject(123);
+
+behSuj.next(300);
+behSuj.subscribe(console.log);
+behSuj.subscribe(console.log);
+behSuj.next(666);
+
+output
+------
+300
+300
+666
+666
+
+
+//replay subject
+const repSub=new ReplaySubject();
+
+repSub.next(123);
+repSub.next(300);
+repSub.subscribe(console.log);
+repSub.subscribe(console.log);
+repSub.next(666);
+
+output
+--------
+123
+300
+123
+300
+666
+666
+
+
+===========================================================================
+
+map vs switch map
+
+map is the most common operator in Observables. It acts relatively similar to map in Arrays. 
+map takes in every value emitted from the Observable, 
+performs an operation on it and returns an Observable (so the Observable chain can continue).
+
+The Angular SwitchMap maps each value from the source observable into an inner observable, subscribes to it, 
+and then starts emitting the values from it. It creates a new inner observable for every value 
+it receives from the Source. Whenever it creates a new inner observable it unsubscribes from all 
+the previously created inner observables. Basically it switches to the newest observable discarding all other.
+https://www.tektutorialshub.com/angular/using-switchmap-in-angular/
+
+
+let srcObservable=of(1,2,3)
+let innerObservable=of('A','B')
+
+srcObservable.pipe(
+    switchMap(val=>{
+        console.log('sourceValue '+val)
+        console.log('starting new observable')
+        return innerObservable
+    })
+)
+.subscribe(
+    ret=>{
+        console.log('recd '+ret)
+    }
+)
+
+output
+--------------------
+sourceValue 1
+starting new observable
+recd A
+recd B
+
+sourceValue 2
+starting new observable
+recd A
+recd B
+
+sourceValue 3
+starting new observable
+recd A
+recd B
+
+String immutable n other eg of immutable classes
+String is immutable in Java because of the security, 
+synchronization and concurrency, caching, and class loading. 
+
+These are some more reasons of making String immutable:
+
+The String pool cannot be possible if String is not immutable in Java. 
+A lot of heap space is saved by JRE. The same string variable can be referred 
+to by more than one string variable in the pool.
+
+The String is safe for multithreading because of its immutableness. 
+Different threads can access a single "String instance". 
+It removes the synchronization for thread safety because we make strings thread-safe implicitly.
+
+Immutability gives the security of loading the correct class by Classloader. 
+
+builder pattern
+Builder is a creational design pattern, which allows constructing complex objects step by step.
+
+
+hashmap person class storing as key
+
+Difference between HashSet and HashMap
+HashSet contains only values whereas HashMap contains an entry(key and value).
+
+dependency injection and annotations
+
+Dependency Injection design pattern allows us to remove the hard-coded dependencies and make our application loosely coupled, 
+extendable and maintainable. 
+We can implement the dependency injection pattern to move the dependency resolution from compile-time to runtime.
+
+annotations using the jpa
+---------------------------------------
+@Entity
+@Table
+@Column
+@Id
+@GeneratedValue
+@Lob
+https://www.journaldev.com/17803/jpa-hibernate-annotations
+
+
+sql
+------------
+
+joins
+ACID Properties
+Atomicity
+It means if any operation is performed on the data, 
+either it should be performed or executed completely or should not be executed at all.
+
+Consistency:
+ The word consistency means that the value should remain preserved always.
+ In the case of transactions, the integrity of the data is very essential 
+ so that the database remains consistent before and after the transaction. The data should always be correct.
+
+Isolation:
+Isolation is the property of a database where no data should affect the other one and may occur concurrently.
+
+Durability:
+Durability ensures the permanency of something. 
+In DBMS, the term durability ensures that the data after the successful execution of the operation becomes permanent in the database. The durability of the data should be so perfect that even if the system fails or leads to a crash, the database still survives. However, if gets lost, it becomes the responsibility of the recovery manager for ensuring the durability of the database. For committing the values, the COMMIT command must be used every time we make changes.
+-------------------------------------------------------------
+Java 8 provides following features for Java Programming:
+
+compact code- Less boiler plate code
+
+More readable and resuasable code
+
+More testable code
+
+parallel operations
+
+Lambda expressions,
+--------------------
+Lambda expression helps us to write our code in functional style. 
+It provides a clear and concise way to implement SAM interface(Single Abstract Method) by using an expression. 
+It is very useful in collection library in which it helps to iterate, filter and extract data.
+
+Lambda expression is an anonymous function-without name,return type,access modifier and having lambda -> symbol
+
+normal programming 
+
+Eg public void add(int a,int b){
+   sout(a+b);
+}
+
+lambda expression
+ (a,b)-> sout(a+b)
+ 
+ Test above assign lambda expression to function interface and test
+ BiConsumer<Integer,Integer> biConsumer=(a,b)=>sout(a+b)
+ biConsumer.accept(10,5)
+
+what is  Method references in java 8
+-------------------------------------------------
+Java 8 Method reference is used to refer method of functional interface . 
+It is compact and easy form of lambda expression. Each time when you are using lambda expression 
+to just referring a method, you can replace your lambda expression with method reference.
+
+Method reference is replacement of lambda expression.It is used to refer method of 
+functional interface to an existing method.Mainly it is used for code reusability.
+
+Functional interface's abstract method can be mapped to specific method using double 
+colon operator(::).This is Method reference.
+
+Map vs flatmap
+--------------------------------------
+Map
+----
+the function u pass to map operation returns a single value.
+the function u pass to flatmap operation returns a stream of values.
+
+flatmap() is a combination of map and flat operation.
+
+map is used for transformation only
+flatmap is used for both transformation and flattening.
+
+List<Integer> list1 = Arrays.asList(1,2,3);
+List<Integer> list2 = Arrays.asList(4,5,6);
+List<Integer> list3 = Arrays.asList(7,8,9);
+  
+List<List<Integer>> listOfLists = Arrays.asList(list1, list2, list3);
+ 
+List<Integer> listOfAllIntegers = listOfLists.stream()
+          .flatMap(x -> x.stream())
+          .collect(Collectors.toList());
+
+System.out.println(listOfAllIntegers);
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Functional interfaces,
+------------------------
+An Interface that contains only one abstract method is known as functional interface. 
+It can have any number of default and static methods. It can also declare methods of object class.
+
+Functional interfaces are also known as Single Abstract Method Interfaces (SAM Interfaces).
+
+Functional interfaces are those interfaces which can have only one abstract method.
+
+It can have any number of static and default methods.
+There are many functional interfaces already present in java such as Comparable,Runnable.
+
+Eg-Runnable interface
+@FunctionalInterface
+public interface Runnable{
+	public abstract void run();
+}
+
+	How lambda expression and functional interfaces are related?
+	Functional interfaces is used to provide reference to lambda expression
+	
+	Eg. Comparator<String> c=(s1,s2)->s1.compareTo(s2)
+	Comparator<String> c is functional interface
+	(s1,s2)->s1.compareTo(s2) is lambda expression
+	
+	How to create custom functional interface
+	
+	@FunctionalInterface
+	public interface FunctionalInterfaceDemo{
+		void singleAbstractMethod();
+		
+		default void printName()
+		{
+			sout("hello default method")
+		}
+		
+		static void  staticMethod(){
+			sout("static method")
+		}
+	
+	}
+
+Stream API,
+------------------------
+Java 8 java.util.stream package consists of classes, interfaces and an enum to allow functional-style 
+operations on the elements. It performs lazy computation. So, it executes only when it requires.
+
+What are streams?
+-if we want to process bulk objects of collection then go for streams concept.
+-way to operate on collection in java 8 is stream.
+-its a special iterator class that allows processing collections of objects in a functional manner.
+fetch all objects from collection of list whose value is greater than 15.
+
+steps    create the stream ->configure the stream(filter,map) -> process the configuration(foreach,collect,reduce)
+
+Eg. List<Integer> arList=new ArrayList();
+	arlist.add(15);
+	arlist.add(25);
+	arlist.add(5);
+	
+	List<Integer> newAl=new ArrayList<Integer>();
+	newAl=arList.stream().filter(x->x>=15).collect(Collectors.toList());
+	newAl.stream().forEach(x->sout(x))
+	
+	Difference between streams and collection
+	To represent group of collection as single entity then we should use collection concept.
+	if we want to process bulk objects of collection then go for streams concept.
+
+Default methods,
+-----------------------
+Java provides a facility to create default methods inside the interface. 
+Methods which are defined inside the interface and tagged with default keyword are known as default methods. 
+These methods are non-abstract methods and can have method body.
+
+
+Base64 Encode Decode,
+
+Static methods in interface,
+
+Optional class,
+-java optional class provides a way to deal with null values.
+It is used to represent a value is present or not.
+Java 8 added a new Optional available in java.util package.
+
+-A Nullpointer exception is a common issue in java app.
+To prevent this,we normally add null checks in our code before we use it in our code.
+Optional provides a better approach to handle such situations.
+
+-You can view optional as a single value container that either contains a value
+or doesnot.
+
+Eg. Employee e=repo.findById(id).get();-->Return type as optional--Nosuch element exception if no object for index say 50 index
+-get() can only return a value if the wrapped object is not null.
+otherwise it throws no such element exception.
+
+-This is the major flaw of get() method.
+Optional should help us avoid such unforeseen exceptions.
+Therefore this approach works against the objectives of optional 
+and will be deprecated in a future release.
+
+	Optional<Employee> e=repo.findById(id).get();
+	if(e.isPresent()){
+		return new ResponseEntity<>(e.get(),HttpStatus.ok);
+		//e.get().getName().toUppercase()-will given Nullpointer exception if null is the data
+		//solution is to create optional object
+		Optional<String> name=Optional.of(e.get().getName());--this will also given nullpointer exception,if null is there
+		//solution is ofNullable
+		Optional<String> name=Optional.ofNullable(e.get().getName());--will print Name is null--
+		if(name.isPresent())
+			return new ResponseEntity<>(name.get().toUpperCase(),HttpStatus.ok);
+		else
+			return new ResponseEntity<>("Name is null",Httpstatus.Not_found);
+	}else{
+	return new ResponseEntity<>("Sorry Employee with given id is not present",HttpStatus.Not_found);
+	}
+	
+--when we have optional object return from a method or created by us,
+we can check if there is a value in it or not,with isPresent() method().
+--isPresent returns true if the wrapped value is not null.
+
+--in Java 11,we can do opposite using the isEmpty method.
+
+	Creating optional objects
+	
+	-We can create optional object with Optional's static method-of()
+	-the argument passed to the of()method can't be null.Otherwise,we will get Nullpointer exception.
+	-In case we expect some null values,we can use ofNullable() method.
+	-By doing this,if we pass a null reference,it doesn't throw an exception but rather returns an
+		empty optional object.
+
+		if(name.isPresent())
+			return new ResponseEntity<>(name.get().toUpperCase(),HttpStatus.ok);
+		else
+			return new ResponseEntity<>("Name is null",Httpstatus.Not_found);
+			
+			instead of above 
+			//name.ifPresent(n->sout("name is present"+n))/
+			//if name is not present we can use 
+			name.ifPresentOrElse(n->sout("name is present"+n),()->sout("sorry name is not present"))
+
+		Given an employee table,fetch the employee with given id and print name in upper case.
+		if name is null print "The name is null",using java 8.
+		
+		using java 9+,you can use ifPresentOrElse method.
+		
+
+
+Collectors class,
+----------------------------
+Collectors is a final class that extends Object class. 
+It provides reduction operations, such as accumulating elements into collections, 
+summarizing elements according to various criteria etc.
+
+ForEach() method,
+---------------------------
+Java provides a new method forEach() to iterate the elements. It is defined in Iterable and Stream interfaces.
+This method takes a single parameter which is a functional interface.
+ So, you can pass lambda expression as an argument.
+
+Nashorn JavaScript Engine
+
+Parallel Array Sorting,
+
+Type and Repating Annotations,
+
+IO Enhancements,
+
+Concurrency Enhancements,
+
+JDBC Enhancements etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+
+rest api
+-------------
+exposing
+
+get-getall,get/id
+
+post
+
+delete
+
+put
+
+exception handling
+
+implementing validations
+
+internationalization
+
+content negotiation
+
+static dynamic filtering
+
+versioning restful services-Basic approach with uris/ Header&Content negotiation approach
+
+Implementing Basic auth with spring security
+
+
+JDBC,Spring JDBC-Update/retrieve todo
+
+
+=================================================
+Java 8 features
+  
+  Streams
+  Functional interfaces
+  Lambda expressions
+  
+
+Java collections
+
+Java threading
+
+Java design patterns
+	Singleton
+	observer
+	factory
+
+Databases-sql server /postgres/Oracle
+
+Messaging platforms -Solace,MQ 
+
+Automated test cases- Protractor/jasmine/junit5/Karma/Mockito
+
+System design
+
+================================================
+Spring boot
+
+Authentication/Authorization-JWT Token/oAuth2
+
+JPA
+
+Hibernate
+
+Microservice architecture and development
+
+
+

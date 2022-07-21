@@ -1,0 +1,140 @@
+
+rbc questions
+=============================
+Introduction
+
+class 
+A class is a blueprint or template of an object. It is a user-defined data type. 
+Inside a class, we define variables, constants, member functions, and other functionality.
+
+object
+An object is a real-world entity that has attributes, behavior, and properties. 
+It is referred to as an instance of the class. 
+It contains member functions, variables that we have defined in the class. 
+It occupies space in the memory. 
+
+
+oops concepts
+
+OOP stands for object-oriented programming. 
+It is a programming paradigm that revolves around the object rather than function and procedure.
+In other words, it is an approach for developing applications that emphasize on objects.
+
+polymorphism
+-------------------------------------------
+The OOP has the following four features:
+
+Inheritance
+
+Encapsulation
+
+Polymorphism
+
+Data Abstraction
+
+types
+
+encapsulation
+
+abstraction
+Abstraction hides the implementation details 
+whereas encapsulation wraps code and data into a single unit.
+
+Abstraction is a process of hiding the implementation details and showing only functionality to the user. 
+It displays just the essential things to the user and hides the internal information, 
+for example, sending SMS where you type the text and send the message. 
+You don't know the internal processing about the message delivery. 
+Abstraction enables you to focus on what the object does instead of how it does it.
+
+In Java, there are two ways to achieve the abstraction.
+Abstract Class
+Interface
+
+interfaces,java 8 features,java 7-default method vs abstraction classes
+
+benefits of classes when to use interfaces
+
+inheritance feature used
+
+exception-checked/unchecked examples,which is implemented
+
+Checked Exceptions: SQLException, IOException
+Unchecked Exceptions: ArrayIndexOutOfBoundException, NullPointerException, ArithmaticException
+
+Checked Exception: Checked exceptions are the one which are checked at compile-time. For example, SQLException, ClassNotFoundException, etc.
+
+Unchecked Exception: Unchecked exceptions are the one which are handled at runtime because they can not be checked at compile-time. For example, ArithmaticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
+
+Error: Error cause the program to exit since they are not recoverable. For Example, OutOfMemoryError, AssertionError, etc.
+
+eg of Error-Java.lang.StackOverFlow, java.lang.OutOfMemoryError
+
+multithreading
+
+executors-
+
+difference b/n execute/submit method
+// submit() method can return the
+        // result of the computation
+        // because it has a return type of Future.
+		
+// execute() method cannot return
+        // anything because it's return type
+        // is void.
+
+time slicing/cyclic barrier
+Preemptive scheduling enables the highest priority task execution until waiting or dead states entered. 
+It also executes, until a higher priority task enters. 
+Time slicing allows a task to execute for a stipulated time slice and then reenters the pool of ready tasks
+
+hibernate
+========================
+how to configuration hibernate.cfg.xml
+property.username
+property.password
+
+
+spring microservices
+===========================================
+microservices architecture
+
+--what is the registry service
+--how to configure microservices
+--wht is the api gateways-how to implement it--zuul library
+--bean scope-singleton/prototype/session/reqest/global
+
+--circuit breaker-multiple services down--to handle this
+
+ssl certificate/how to implemented
+
+spring security
+jwt token--how u managed them
+lifecycle of jwt token
+architecture of jwt-
+
+
+project experience-how u implemented
+role during that project
+deployed the war
+
+database
+--------------------------
+joins
+
+trigger
+
+stored function
+
+--------------------------
+jira-ticket
+---------------------------
+junit
+
+agile
+
+
+
+
+
+
+
